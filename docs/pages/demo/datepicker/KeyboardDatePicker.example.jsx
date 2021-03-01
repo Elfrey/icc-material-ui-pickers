@@ -1,4 +1,6 @@
 import React, { Fragment, useState } from 'react';
+import { InputAdornment, IconButton, Tooltip } from '@material-ui/core';
+import { CalendarToday } from '@material-ui/icons';
 import { KeyboardDatePicker } from '@material-ui/pickers';
 
 function KeyboardDatePickerExample(props) {
@@ -9,7 +11,7 @@ function KeyboardDatePickerExample(props) {
       <KeyboardDatePicker
         clearable
         value={selectedDate}
-        placeholder="10/10/2018"
+        placeholder="10/10/2020"
         onChange={date => handleDateChange(date)}
         minDate={new Date()}
         format={props.__willBeReplacedGetFormatString({

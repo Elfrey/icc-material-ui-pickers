@@ -41,6 +41,21 @@ function CustomDateTimePicker(props) {
         label="Keyboard with error handler"
         onError={console.log}
         minDate={new Date('2018-01-01T00:00')}
+        calendarTooltipProps={{
+          title: 'SHOW ME CALENDAR',
+        }}
+        leftTooltipProps={{
+          title: 'Show me prev month',
+        }}
+        rightTooltipProps={{
+          title: 'Show me next month',
+        }}
+        dateTooltipProps={{
+          title: 'I Want to pick a date',
+        }}
+        timeTooltipProps={{
+          title: 'Time is what I need',
+        }}
         format={props.__willBeReplacedGetFormatString({
           moment: 'YYYY/MM/DD hh:mm A',
           dateFns: 'yyyy/MM/dd hh:mm a',

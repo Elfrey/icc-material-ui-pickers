@@ -13,6 +13,7 @@ import {
   makePickerWithState,
   WithPureInputProps,
 } from '../Picker/makePickerWithState';
+import { TooltipProps } from '@material-ui/core/Tooltip';
 
 export type DateTimePickerView = 'year' | 'date' | 'month' | 'hours' | 'minutes';
 
@@ -27,8 +28,10 @@ export interface DateTimePickerViewsProps extends BaseDateTimePickerProps {
   hideTabs?: boolean;
   /** Date tab icon */
   dateRangeIcon?: React.ReactNode;
+  dateTooltipProps?: TooltipProps;
   /** Time tab icon */
   timeIcon?: React.ReactNode;
+  timeTooltipProps?: TooltipProps;
 }
 
 export type DateTimePickerProps = WithPureInputProps & DateTimePickerViewsProps;

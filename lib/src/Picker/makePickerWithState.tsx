@@ -41,6 +41,7 @@ export function makePickerWithState<T extends any>({
       animateYearScrolling,
       autoOk,
       dateRangeIcon,
+      dateTooltipProps,
       disableFuture,
       disablePast,
       disableToolbar,
@@ -53,6 +54,7 @@ export function makePickerWithState<T extends any>({
       invalidLabel,
       labelFunc,
       leftArrowButtonProps,
+      leftTooltipProps,
       leftArrowIcon,
       loadingIndicator,
       maxDate,
@@ -70,10 +72,12 @@ export function makePickerWithState<T extends any>({
       orientation,
       renderDay,
       rightArrowButtonProps,
+      rightTooltipProps,
       rightArrowIcon,
       shouldDisableDate,
       strictCompareDates,
       timeIcon,
+      timeTooltipProps,
       ToolbarComponent = DefaultToolbarComponent,
       value,
       variant,
@@ -82,6 +86,7 @@ export function makePickerWithState<T extends any>({
     } = props;
 
     const injectedProps = getCustomProps ? getCustomProps(props) : {};
+    console.debug('dateTooltipProps', dateTooltipProps);
 
     const options = useOptions(props);
     const { pickerProps, inputProps, wrapperProps } = useState(props as any, options);
@@ -101,11 +106,13 @@ export function makePickerWithState<T extends any>({
           ampm={ampm}
           animateYearScrolling={animateYearScrolling}
           dateRangeIcon={dateRangeIcon}
+          dateTooltipProps={dateTooltipProps}
           disableFuture={disableFuture}
           disablePast={disablePast}
           disableToolbar={disableToolbar}
           hideTabs={hideTabs}
           leftArrowButtonProps={leftArrowButtonProps}
+          leftTooltipProps={leftTooltipProps}
           leftArrowIcon={leftArrowIcon}
           loadingIndicator={loadingIndicator}
           maxDate={maxDate}
@@ -117,10 +124,12 @@ export function makePickerWithState<T extends any>({
           orientation={orientation}
           renderDay={renderDay}
           rightArrowButtonProps={rightArrowButtonProps}
+          rightTooltipProps={rightTooltipProps}
           rightArrowIcon={rightArrowIcon}
           shouldDisableDate={shouldDisableDate}
           strictCompareDates={strictCompareDates}
           timeIcon={timeIcon}
+          timeTooltipProps={timeTooltipProps}
           ToolbarComponent={ToolbarComponent}
           views={views}
         />

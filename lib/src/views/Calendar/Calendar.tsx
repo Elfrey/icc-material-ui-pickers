@@ -4,6 +4,7 @@ import Day from './Day';
 import DayWrapper from './DayWrapper';
 import CalendarHeader from './CalendarHeader';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { TooltipProps } from '@material-ui/core/Tooltip';
 import SlideTransition, { SlideDirection } from './SlideTransition';
 import { Theme } from '@material-ui/core/styles';
 import { VariantContext } from '../../wrappers/Wrapper';
@@ -15,6 +16,8 @@ import { findClosestEnabledDate } from '../../_helpers/date-utils';
 import { withUtils, WithUtilsProps } from '../../_shared/WithUtils';
 
 export interface OutterCalendarProps {
+  leftTooltipProps?: Partial<TooltipProps>;
+  rightTooltipProps?: Partial<TooltipProps>;
   /** Left arrow icon */
   leftArrowIcon?: React.ReactNode;
   /** Right arrow icon */
@@ -299,8 +302,10 @@ export class Calendar extends React.Component<CalendarProps, CalendarState> {
       classes,
       allowKeyboardControl,
       leftArrowButtonProps,
+      leftTooltipProps,
       leftArrowIcon,
       rightArrowButtonProps,
+      rightTooltipProps,
       rightArrowIcon,
       loadingIndicator,
     } = this.props;
@@ -318,6 +323,8 @@ export class Calendar extends React.Component<CalendarProps, CalendarState> {
           onMonthChange={this.handleChangeMonth}
           leftArrowIcon={leftArrowIcon}
           leftArrowButtonProps={leftArrowButtonProps}
+          leftTooltipProps={leftTooltipProps}
+          rightTooltipProps={rightTooltipProps}
           rightArrowIcon={rightArrowIcon}
           rightArrowButtonProps={rightArrowButtonProps}
           disablePrevMonth={this.shouldDisablePrevMonth()}

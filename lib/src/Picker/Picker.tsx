@@ -8,11 +8,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import { YearSelection } from '../views/Year/YearView';
 import { BasePickerProps } from '../typings/BasePicker';
 import { MaterialUiPickersDate } from '../typings/date';
+import { TooltipProps } from '@material-ui/core/Tooltip';
 import { MonthSelection } from '../views/Month/MonthView';
 import { BaseTimePickerProps } from '../TimePicker/TimePicker';
 import { BaseDatePickerProps } from '../DatePicker/DatePicker';
 import { useIsLandscape } from '../_shared/hooks/useIsLandscape';
-import { datePickerDefaultProps } from '../constants/prop-types';
+import { datePickerDefaultProps, timePickerDefaultProps } from '../constants/prop-types';
 import { DIALOG_WIDTH_WIDER, DIALOG_WIDTH, VIEW_HEIGHT } from '../constants/dimensions';
 
 const viewsMap = {
@@ -36,7 +37,9 @@ export type ToolbarComponentProps = BaseDatePickerProps &
     // TODO move out, cause it is DateTimePickerOnly
     hideTabs?: boolean;
     dateRangeIcon?: React.ReactNode;
+    dateTooltipProps?: TooltipProps;
     timeIcon?: React.ReactNode;
+    timeTooltipProps?: TooltipProps;
     isLandscape: boolean;
   };
 
@@ -48,7 +51,9 @@ export interface PickerViewProps extends BaseDatePickerProps, BaseTimePickerProp
   // TODO move out, cause it is DateTimePickerOnly
   hideTabs?: boolean;
   dateRangeIcon?: React.ReactNode;
+  dateTooltipProps?: TooltipProps;
   timeIcon?: React.ReactNode;
+  timeTooltipProps?: TooltipProps;
 }
 
 interface PickerProps extends PickerViewProps {
@@ -92,6 +97,8 @@ export const Picker: React.FunctionComponent<PickerProps> = ({
   maxDate: unparsedMaxDate,
   ToolbarComponent,
   orientation,
+  timeTooltipProps,
+  dateTooltipProps,
   ...rest
 }) => {
   const utils = useUtils();
@@ -111,6 +118,8 @@ export const Picker: React.FunctionComponent<PickerProps> = ({
       {!disableToolbar && (
         <ToolbarComponent
           {...rest}
+          timeTooltipProps={timeTooltipProps}
+          dateTooltipProps={dateTooltipProps}
           views={views}
           isLandscape={isLandscape}
           date={date}

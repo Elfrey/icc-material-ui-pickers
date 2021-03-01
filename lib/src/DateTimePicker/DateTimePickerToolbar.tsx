@@ -32,7 +32,9 @@ export const DateTimePickerToolbar: React.FC<ToolbarComponentProps> = ({
   ampm,
   hideTabs,
   dateRangeIcon,
+  dateTooltipProps,
   timeIcon,
+  timeTooltipProps,
   onChange,
 }) => {
   const utils = useUtils();
@@ -113,7 +115,9 @@ export const DateTimePickerToolbar: React.FC<ToolbarComponentProps> = ({
       {showTabs && (
         <DateTimePickerTabs
           dateRangeIcon={dateRangeIcon}
+          dateTooltipProps={dateTooltipProps}
           timeIcon={timeIcon}
+          timeTooltipProps={timeTooltipProps}
           view={openView as DateTimePickerView}
           onChange={setOpenView}
         />

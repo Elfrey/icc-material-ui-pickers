@@ -2,6 +2,7 @@ import * as React from 'react';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import Paper from '@material-ui/core/Paper';
+import Tooltip, { TooltipProps } from '@material-ui/core/Tooltip';
 import { TimeIcon } from '../_shared/icons/TimeIcon';
 import { DateTimePickerView } from './DateTimePicker';
 import { DateRangeIcon } from '../_shared/icons/DateRangeIcon';
@@ -25,6 +26,8 @@ const tabIndexToView = (tab: DateTimePickerView) => {
 
 export interface DateTimePickerTabsProps {
   view: DateTimePickerView;
+  dateTooltipProps?: Partial<TooltipProps>;
+  timeTooltipProps?: Partial<TooltipProps>;
   onChange: (view: DateTimePickerView) => void;
   dateRangeIcon?: React.ReactNode;
   timeIcon?: React.ReactNode;
@@ -34,8 +37,8 @@ export const useStyles = makeStyles(
   theme => {
     // prettier-ignore
     const tabsBackground = theme.palette.type === 'light'
-    ? theme.palette.primary.main
-    : theme.palette.background.default;
+      ? theme.palette.primary.main
+      : theme.palette.background.default;
 
     return {
       tabs: {
@@ -52,6 +55,8 @@ export const DateTimePickerTabs: React.SFC<DateTimePickerTabsProps> = ({
   onChange,
   dateRangeIcon,
   timeIcon,
+  dateTooltipProps,
+  timeTooltipProps,
 }) => {
   const classes = useStyles();
   const theme = useTheme();
@@ -71,8 +76,12 @@ export const DateTimePickerTabs: React.SFC<DateTimePickerTabsProps> = ({
         className={classes.tabs}
         indicatorColor={indicatorColor}
       >
-        <Tab value="date" icon={<>{dateRangeIcon}</>} />
-        <Tab value="time" icon={<>{timeIcon}</>} />
+        <Tooltip title="Pick date" {...dateTooltipProps}>
+          <Tab value="date" icon={<>{dateRangeIcon}</>} />
+        </Tooltip>
+        <Tooltip title="Pick time" {...timeTooltipProps}>
+          <Tab value="time" icon={<>{timeIcon}</>} />
+        </Tooltip>
       </Tabs>
     </Paper>
   );

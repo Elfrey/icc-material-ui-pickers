@@ -1123,6 +1123,19 @@
         "name": "Partial<InputAdornmentProps>"
       }
     },
+    "calendarTooltipProps": {
+      "defaultValue": null,
+      "description": "Props to pass to keyboard input adornment Tooltip",
+      "name": "calendarTooltipProps",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/KeyboardDateInput.tsx",
+        "name": "KeyboardDateInputProps"
+      },
+      "required": false,
+      "type": {
+        "name": "Partial<TooltipProps>"
+      }
+    },
     "KeyboardButtonProps": {
       "defaultValue": null,
       "description": "Props to pass to keyboard adornment button",
@@ -2223,6 +2236,19 @@
       "required": false,
       "type": {
         "name": "Partial<InputAdornmentProps>"
+      }
+    },
+    "calendarTooltipProps": {
+      "defaultValue": null,
+      "description": "Props to pass to keyboard input adornment Tooltip",
+      "name": "calendarTooltipProps",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/KeyboardDateInput.tsx",
+        "name": "KeyboardDateInputProps"
+      },
+      "required": false,
+      "type": {
+        "name": "Partial<TooltipProps>"
       }
     },
     "KeyboardButtonProps": {
@@ -3394,6 +3420,19 @@
       "required": false,
       "type": {
         "name": "Partial<InputAdornmentProps>"
+      }
+    },
+    "calendarTooltipProps": {
+      "defaultValue": null,
+      "description": "Props to pass to keyboard input adornment Tooltip",
+      "name": "calendarTooltipProps",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/KeyboardDateInput.tsx",
+        "name": "KeyboardDateInputProps"
+      },
+      "required": false,
+      "type": {
+        "name": "Partial<TooltipProps>"
       }
     },
     "KeyboardButtonProps": {

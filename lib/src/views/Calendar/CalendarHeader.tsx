@@ -3,6 +3,7 @@ import * as PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import SlideTransition, { SlideDirection } from './SlideTransition';
 import IconButton, { IconButtonProps } from '@material-ui/core/IconButton';
+import Tooltip, { TooltipProps } from '@material-ui/core/Tooltip';
 import { DateType } from '@date-io/type';
 import { useUtils } from '../../_shared/hooks/useUtils';
 import { MaterialUiPickersDate } from '../../typings/date';
@@ -12,6 +13,8 @@ import { ArrowRightIcon } from '../../_shared/icons/ArrowRightIcon';
 
 export interface CalendarHeaderProps {
   currentMonth: DateType;
+  leftTooltipProps?: Partial<TooltipProps>;
+  rightTooltipProps?: Partial<TooltipProps>;
   leftArrowIcon?: React.ReactNode;
   rightArrowIcon?: React.ReactNode;
   leftArrowButtonProps?: Partial<IconButtonProps>;
@@ -59,6 +62,8 @@ export const useStyles = makeStyles(
 export const CalendarHeader: React.SFC<CalendarHeaderProps> = ({
   currentMonth,
   onMonthChange,
+  leftTooltipProps,
+  rightTooltipProps,
   leftArrowIcon,
   rightArrowIcon,
   leftArrowButtonProps,
@@ -78,14 +83,16 @@ export const CalendarHeader: React.SFC<CalendarHeaderProps> = ({
   return (
     <div>
       <div className={classes.switchHeader}>
-        <IconButton
-          {...leftArrowButtonProps}
-          disabled={disablePrevMonth}
-          onClick={selectPreviousMonth}
-          className={classes.iconButton}
-        >
-          {rtl ? rightArrowIcon : leftArrowIcon}
-        </IconButton>
+        <Tooltip title="Previous Month" {...leftTooltipProps}>
+          <IconButton
+            {...leftArrowButtonProps}
+            disabled={disablePrevMonth}
+            onClick={selectPreviousMonth}
+            className={classes.iconButton}
+          >
+            {rtl ? rightArrowIcon : leftArrowIcon}
+          </IconButton>
+        </Tooltip>
 
         <SlideTransition
           slideDirection={slideDirection}
@@ -97,14 +104,16 @@ export const CalendarHeader: React.SFC<CalendarHeaderProps> = ({
           </Typography>
         </SlideTransition>
 
-        <IconButton
-          {...rightArrowButtonProps}
-          disabled={disableNextMonth}
-          onClick={selectNextMonth}
-          className={classes.iconButton}
-        >
-          {rtl ? leftArrowIcon : rightArrowIcon}
-        </IconButton>
+        <Tooltip title="Next Month" {...rightTooltipProps}>
+          <IconButton
+            {...rightArrowButtonProps}
+            disabled={disableNextMonth}
+            onClick={selectNextMonth}
+            className={classes.iconButton}
+          >
+            {rtl ? leftArrowIcon : rightArrowIcon}
+          </IconButton>
+        </Tooltip>
       </div>
 
       <div className={classes.daysHeader}>

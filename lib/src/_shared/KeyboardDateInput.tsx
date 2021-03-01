@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Tooltip, { TooltipProps } from '@material-ui/core/Tooltip';
 import IconButton, { IconButtonProps } from '@material-ui/core/IconButton';
 import InputAdornment, { InputAdornmentProps } from '@material-ui/core/InputAdornment';
 import TextField, { BaseTextFieldProps, TextFieldProps } from '@material-ui/core/TextField';
@@ -44,6 +45,11 @@ export interface KeyboardDateInputProps
    */
   InputAdornmentProps?: Partial<InputAdornmentProps>;
   /**
+   * Props to pass to keyboard input adornment Tooltip
+   * @type {Partial<TooltipProps>}
+   */
+  calendarTooltipProps?: Partial<TooltipProps>;
+  /**
    * Props to pass to keyboard adornment button
    * @type {Partial<IconButtonProps>}
    */
@@ -58,6 +64,7 @@ export const KeyboardDateInput: React.FunctionComponent<KeyboardDateInputProps> 
   validationError,
   KeyboardButtonProps,
   InputAdornmentProps,
+  calendarTooltipProps,
   openPicker: onOpen,
   onChange,
   InputProps,
@@ -75,7 +82,7 @@ export const KeyboardDateInput: React.FunctionComponent<KeyboardDateInputProps> 
   // prettier-ignore
   const formatter = React.useMemo(
     () => maskedDateFormatter(inputMask, maskChar, refuse),
-    [inputMask, maskChar, refuse]
+    [inputMask, maskChar, refuse],
   );
 
   const position =
@@ -106,11 +113,13 @@ export const KeyboardDateInput: React.FunctionComponent<KeyboardDateInputProps> 
           InputProps={{
             ...InputProps,
             [`${position}Adornment`]: (
-              <InputAdornment position={position} {...InputAdornmentProps}>
-                <IconButton disabled={disabled} {...KeyboardButtonProps} onClick={onOpen}>
-                  {keyboardIcon}
-                </IconButton>
-              </InputAdornment>
+              <Tooltip title="Open calendar" {...calendarTooltipProps}>
+                <InputAdornment position={position} {...InputAdornmentProps}>
+                  <IconButton disabled={disabled} {...KeyboardButtonProps} onClick={onOpen}>
+                    {keyboardIcon}
+                  </IconButton>
+                </InputAdornment>
+              </Tooltip>
             ),
           }}
         />
