@@ -81,6 +81,7 @@ export const YearSelection: React.FC<YearSelectionProps> = ({
             selected={selected}
             value={yearNumber}
             onSelect={onYearSelect}
+            // @ts-ignore
             ref={selected ? selectedYearRef : undefined}
             disabled={Boolean(
               (disablePast && utils.isBeforeYear(year, utils.date())) ||
